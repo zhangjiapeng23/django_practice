@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>login page</title>
+{% endblock %}
+
+
+{% block body %}
+    <h1>Current date: {{ time }}</h1>
+    <form action={% url 'app_first:login' %} method="post">
+        {% csrf_token %}
+        <p>username: <input type="text" name="username"/></p>
+        <p>password: <input type="password" name="password"/></p>
+        <input type="submit" value="Login">
+    </form>
+{% endblock %}
