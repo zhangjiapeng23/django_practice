@@ -6,7 +6,7 @@
 
 
 {% block body %}
-    <h1>Current date: {{ time }}</h1>
+    <h1 style="color: darkorchid;text-align: center">Current date: {{ time }}</h1>
     <form action={% url 'app_first:login' %} method="post">
         {% csrf_token %}
         <p>username: <input type="text" name="username"/></p>
