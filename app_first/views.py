@@ -32,7 +32,11 @@ def register(request):
         user_name = request.POST.get('username')
         password = request.POST.get('password')
         if user_name != '' and password != '':
-            User.objects.create(user_name=user_name, password=password)
+            if len(User.objects.all().filter(user_name=user_name)) != 0:
+                return HttpResponse("user name is exist!")
+            else:
+                user_info = User.objects.create(user_name=user_name, password=password)
+                print(user_info.user_name, user_info.password)
             return render(request, 'login.html')
         else:
             return HttpResponse("user name or password is blank!!")
