@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from datetime import datetime
 
-from app_first.models import User
+from app_first.models import User, Books
 # Create your views here.
 
 
@@ -43,6 +44,45 @@ def register(request):
 
     else:
         return render(request, 'register.html')
+
+
+def books(request):
+    books = Books.objects.all()
+    if books.count() > 0:
+        for book in books:
+            book_id = book.id
+            book_name = book.book_name
+            book_price = book.price
+            book_publish_date = book.publish_date
+            book_press = book.press
+            print(book_id, book_name, book_price, book_publish_date, book_press)
+    else:
+        return HttpResponse('No content as this time.')
+    return render(request, 'books.html', {'books': books})
+
+
+def add_book(request):
+    if request.method == 'GET':
+        return render(request, 'add_book.html')
+    elif request.method == 'POST':
+        book_name = request.POST.get('book_name')
+        price = float(request.POST.get('price'))
+        publist_date = request.POST.get('publish_date')
+        publist_date = datetime.strptime(publist_date, '%Y%m%d')
+        publist_date = publist_date.strftime('%Y-%m-%d')
+        press = request.POST.get('press')
+        Books.objects.create(book_name=book_name, price=price, publish_date=publist_date, press=press)
+    return redirect('/app_first/books')
+
+
+
+def remove_book(request, id: int):
+    res = Books.objects.all().filter(id=id)
+    if res:
+        res.delete()
+    else:
+        print("Not find this book!")
+    return redirect('/app_first/books')
 
 
 

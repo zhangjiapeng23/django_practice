@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>books</title>
+</head>
+<body>
+<h1>显示书籍</h1>
+<button name="button" onclick="window.location.href='../addbook'">添加书籍</button>
+<table border="1" width="800">
+    <tr>
+        <th>书籍名称</th>
+        <th>价格</th>
+        <th>出版日期</th>
+        <th>出版社</th>
+        <th>删除操作</th>
+        <th>编辑操作</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <th>{{ book.book_name }}</th>
+        <th>{{ book.price }}</th>
+        <th>{{ book.publish_date }}</th>
+        <th>{{ book.press }}</th>
+        <th>
+            <button name="button" onclick="window.location.href='../removebook/{{ book.id }}'">删除</button>
+        </th>
+        <th>
+            <button name="button">编辑书籍</button>
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
