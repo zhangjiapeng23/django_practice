@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Add book</title>
+</head>
+<body>
+    <h1>编辑书籍</h1>
+    <form method="post">
+        {% csrf_token %}
+        书籍名称<br />
+        <input name="book_name" type="text" /><br />
+        价格<br />
+        <input name="price" type="text" /><br />
+        出版日期<br />
+        <input name="publish_date" type="text" /><br />
+        出版社<br />
+        <input name="press" type="text"><br />
+        <input name="提交" type="submit" >
+    </form>
+
+</body>
+</html>
