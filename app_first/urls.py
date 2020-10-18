@@ -10,7 +10,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('books/', views.books, name='books'),
     path('addbook/', views.add_book, name='add_book'),
-    path('removebook/<int:id>', views.remove_book, name='remove_book')
+    path('removebook/<int:id>', views.remove_book, name='remove_book'),
+    path('editbook/<int:id>', views.edit_book, name='edit_book')
 
 
 ]

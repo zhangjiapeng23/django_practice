@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+</head>
+<body>
+<h1>编辑书籍</h1>
+<form method="post">
+    {% csrf_token %}
+    <h4>书籍名字</h4>
+    <input type="text" name="edit_name" placeholder={{ book.book_name }} /><br />
+    <h4>价格</h4>
+    <input type="text" name="edit_price" placeholder={{ book.price }} /><br />
+    <h4>出版日期</h4>
+    <input type="text" name="edit_date" placeholder={{ book.publish_date|date:"Ymd" }} /><br />
+    <h4>出版社</h4>
+    <input type="text" name="edit_press" placeholder="{{ book.press }}" /><br />
+    <input type="submit" name="提交">
+</form>
+
+</body>
+</html>

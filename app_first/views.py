@@ -57,7 +57,7 @@ def books(request):
             book_press = book.press
             print(book_id, book_name, book_price, book_publish_date, book_press)
     else:
-        return HttpResponse('No content as this time.')
+        books = None
     return render(request, 'books.html', {'books': books})
 
 
@@ -83,6 +83,26 @@ def remove_book(request, id: int):
     else:
         print("Not find this book!")
     return redirect('/app_first/books')
+
+def edit_book(request, id: int):
+    if request.method == 'GET':
+        book = Books.objects.all().filter(id=id)
+        if book:
+            return render(request, 'edit_book.html', {'book': book[0]})
+        else:
+            print("Not find this book!")
+    elif request.method == 'POST':
+        book_name = request.POST.get('edit_name')
+        price = request.POST.get('edit_price')
+        publish_date = request.POST.get('edit_date')
+        publish_date = datetime.strptime(publish_date, "%Y%m%d")
+        publish_date = publish_date.strftime("%Y-%m-%d")
+        press = request.POST.get('edit_press')
+        Books.objects.all().filter(id=id).update(book_name=book_name, price=price, publish_date=publish_date,
+                                                 press=press)
+
+    return redirect('/app_first/books')
+
 
 
 
