@@ -5,12 +5,17 @@
     <title>books</title>
 </head>
 <body>
+<style type="text/css">
+    .bookstable{
+        margin: auto;
+    }
+</style>
 <h1>显示书籍</h1>
-<button name="button" onclick="window.location.href='../addbook'">添加书籍</button>
+<button name="button" style="margin-left: 18%" onclick="window.location.href='../addbook'">添加书籍</button>
 {% if books is None %}
     <h4>没有查到任何书籍</h4>
 {% else %}
-    <table border="1" width="800">
+    <table border="1" width="800" class="bookstable">
     <tr>
         <th>书籍名称</th>
         <th>价格</th>

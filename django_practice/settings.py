@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'django_practice.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'app_first_new',  # 要连接的数据库，需创建好，
+        'NAME': 'app_first',  # 要连接的数据库，需创建好，
         'USER': 'root',
         'PASSWORD': 'lb15116188571j',
         'HOST': '127.0.0.1',
